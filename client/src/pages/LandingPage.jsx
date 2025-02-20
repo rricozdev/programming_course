@@ -215,7 +215,7 @@ const LandingPage = () => {
             <div className="text-center md:text-left mb-4 md:mb-0">
               <p className="text-lg font-semibold">Curso de Programación</p>
               <p className="text-gray-400">
-                © 2023 Todos los derechos reservados
+                © 2025 Todos los derechos reservados
               </p>
             </div>
             <div className="flex space-x-4">
