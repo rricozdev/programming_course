@@ -71,9 +71,15 @@ Hemos desarrollado una Landing Page moderna y atractiva usando **ReactJS** y **T
 
 ---
 
+
+
+
 ## 📲 Escanea el QR para más información
-![QR Image](./client/src/assets/QR.png)  
-_Simplemente escanea el código QR con tu móvil y accede directamente a la página del curso._
+_Simplemente escanea el código QR con tu móvil y accede directamente a la página del curso._  
+
+<p align="center">
+  <img src="./client/src/assets/QR.png" alt="QR Image" width="180" height="180">
+</p>
 
 ---
 
