@@ -24,9 +24,17 @@ const LandingPage = () => {
     },
   };
 
+  // const openWhatsApp = (number) => {
+  //   window.open(`https://wa.me/${number}`, "_blank");
+  // };
+
   const openWhatsApp = (number) => {
-    window.open(`https://wa.me/${number}`, "_blank");
+    const message = encodeURIComponent(
+      "¡Hola! Estoy interesado en el curso de programación. ¿Podrías darme más información?"
+    );
+    window.open(`https://wa.me/${number}?text=${message}`, "_blank");
   };
+  
 
   return (
     <div className="min-h-screen bg-gray-900">
