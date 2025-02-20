@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { BsWhatsapp } from "react-icons/bs";
+// import { BsWhatsapp } from "react-icons/bs";
+import { FaWhatsapp } from "react-icons/fa";
 import { FaReact, FaNodeJs, FaBrain, FaGitAlt, FaPython, FaCss3Alt } from "react-icons/fa"; // Íconos de React, Node.js, cerebro (IA), Git, Python, CSS3
 import { SiExpress, SiSequelize, SiJavascript, SiMongodb } from "react-icons/si"; // Íconos de Express, Sequelize, JavaScript, MongoDB
 
@@ -142,7 +143,8 @@ const LandingPage = () => {
                     className="flex items-center space-x-4 mb-4 cursor-pointer hover:bg-gray-700 p-2 rounded-lg"
                     onClick={() => openWhatsApp(number)}
                   >
-                    <BsWhatsapp className="text-yellow-400 h-5 w-5" />
+                    {/* <BsWhatsapp className="text-yellow-400 h-5 w-5" /> */}
+                    <FaWhatsapp className="text-yellow-400 h-5 w-5" />
                     <div>
                       <p className="text-gray-300 capitalize">{name}</p>
                       <p className="text-gray-400">{number}</p>
