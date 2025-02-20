@@ -1,40 +1,55 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
-// import { BsWhatsapp } from "react-icons/bs";
 import { FaWhatsapp } from "react-icons/fa";
-import { FaReact, FaNodeJs, FaBrain, FaGitAlt, FaPython, FaCss3Alt } from "react-icons/fa"; // Íconos de React, Node.js, cerebro (IA), Git, Python, CSS3
-import { SiExpress, SiSequelize, SiJavascript, SiMongodb } from "react-icons/si"; // Íconos de Express, Sequelize, JavaScript, MongoDB
+import { FaReact, FaNodeJs, FaBrain, FaGitAlt, FaPython, FaCss3Alt } from "react-icons/fa";
+import { SiExpress, SiSequelize, SiJavascript, SiMongodb } from "react-icons/si";
 
 import Program from "../components/Program";
 import imageBg from "../assets/bgcurso2.jpg";
 import logo from "../assets/labs.png";
 
-// Componente Landing Page
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const contactsManager = {
+    contacts: [
+      {
+        id: 1,
+        name: "Arch",
+        role: "Instructor",
+        phone: "573135344581",
+        platform: "whatsapp"
+      },
+      {
+        id: 2,
+        name: "Tiago",
+        role: "Instructor",
+        phone: "573205510452",
+        platform: "whatsapp"
+      }
+    ],
+
+    messages: {
+      whatsapp: "¡Hola! Estoy interesado en el curso de programación. ¿Podrías darme más información?"
+    },
+
+    openChat(contact) {
+      const message = encodeURIComponent(this.messages[contact.platform]);
+      
+      if (contact.platform === "whatsapp") {
+        const whatsappUrl = `whatsapp://send?phone=${contact.phone}&text=${message}`;
+        try {
+          window.location.href = whatsappUrl;
+        } catch (error) {
+          window.location.href = `https://wa.me/${contact.phone}?text=${message}`;
+        }
+      }
+    }
+  };
 
   const scrollToContact = () => {
     document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
   };
-
-  const contacts = {
-    WhatsApp: {
-      arch: "3135344581",
-      tiago: "3205510452",
-    },
-  };
-
-  // const openWhatsApp = (number) => {
-  //   window.open(`https://wa.me/${number}`, "_blank");
-  // };
-
-  const openWhatsApp = (number) => {
-    const message = encodeURIComponent(
-      "¡Hola! Estoy interesado en el curso de programación. ¿Podrías darme más información?"
-    );
-    window.open(`https://wa.me/${number}?text=${message}`, "_blank");
-  };
-  
 
   return (
     <div className="min-h-screen bg-gray-900">
@@ -145,24 +160,24 @@ const LandingPage = () => {
                 <h3 className="text-xl font-semibold text-yellow-400 mb-4">
                   Contacta por WhatsApp
                 </h3>
-                {Object.entries(contacts.WhatsApp).map(([name, number]) => (
+                {contactsManager.contacts.map((contact) => (
                   <div
-                    key={name}
+                    key={contact.id}
                     className="flex items-center space-x-4 mb-4 cursor-pointer hover:bg-gray-700 p-2 rounded-lg"
-                    onClick={() => openWhatsApp(number)}
+                    onClick={() => contactsManager.openChat(contact)}
                   >
-                    {/* <BsWhatsapp className="text-yellow-400 h-5 w-5" /> */}
                     <FaWhatsapp className="text-yellow-400 h-5 w-5" />
                     <div>
-                      <p className="text-gray-300 capitalize">{name}</p>
-                      <p className="text-gray-400">{number}</p>
+                      <p className="text-gray-300 capitalize">{contact.name}</p>
+                      <p className="text-gray-400 text-sm">{contact.role}</p>
+                      <p className="text-gray-400">{contact.phone}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Sección de íconos de tecnologías */}
+            {/* Tech Icons Section */}
             <div className="flex flex-col items-center space-y-8">
               {/* Primera fila: 3 íconos */}
               <div className="flex justify-center space-x-8">
