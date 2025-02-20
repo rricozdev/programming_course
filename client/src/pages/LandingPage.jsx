@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import { FaReact, FaNodeJs, FaBrain, FaGitAlt, FaPython, FaCss3Alt } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaGitAlt, FaCss3Alt } from "react-icons/fa";
+import { RiTailwindCssFill } from "react-icons/ri";
+import { CiDatabase } from "react-icons/ci";
+
+
 import { SiExpress, SiSequelize, SiJavascript, SiMongodb } from "react-icons/si";
 
 import Program from "../components/Program";
@@ -213,11 +217,11 @@ const LandingPage = () => {
 
               {/* Tercera fila: 3 íconos */}
               <div className="flex justify-center space-x-8">
-                <FaGitAlt
+                <FaGitAlt 
                   className="text-6xl text-orange-500 hover:text-orange-400 cursor-pointer transform hover:scale-110 hover:shadow-lg transition-all"
                   title="Git"
                 />
-                <FaPython
+                <CiDatabase
                   className="text-6xl text-blue-500 hover:text-blue-400 cursor-pointer transform hover:scale-110 hover:shadow-lg transition-all"
                   title="Python"
                 />
