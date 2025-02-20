@@ -67,12 +67,12 @@ Hemos desarrollado una Landing Page moderna y atractiva usando **ReactJS** y **T
 - Programa académico con imágenes interactivas.
 - Código QR para acceder desde tu móvil.
 
-🔗 [Accede a la Landing Page](https://mi-app.vercel.app)
+🔗 [Accede a la Landing Page](https://programming-course-three.vercel.app)
 
 ---
 
 ## 📲 Escanea el QR para más información
-![QR Image](./qr-image.png)  
+![QR Image](./client/src/assets/QR.png)  
 _Simplemente escanea el código QR con tu móvil y accede directamente a la página del curso._
 
 ---
