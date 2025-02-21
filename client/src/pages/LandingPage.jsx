@@ -61,7 +61,7 @@ const LandingPage = () => {
     setTimeout(() => {
       setLoading(false);
       navigate('/registro');
-    }, 3000);
+    }, 2000);
   };
 
   return (
