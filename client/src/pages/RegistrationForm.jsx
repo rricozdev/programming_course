@@ -113,15 +113,15 @@ const RegistrationForm = () => {
             {/* Nombre completo */}
             <div>
               <label
-                htmlFor="fullName"
+                htmlFor="name"
                 className="block text-sm font-medium text-gray-300"
               >
                 Nombre completo
               </label>
               <input
                 type="text"
-                id="fullName"
-                name="fullName"
+                id="name"
+                name="name"
                 value={formData.name}
                 onChange={handleChange}
                 className="mt-1 block w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:ring-yellow-400 focus:border-yellow-400"
@@ -158,8 +158,8 @@ const RegistrationForm = () => {
               </label>
               <input
                 type="text"
-                id="faculty"
-                name="faculty"
+                id="facultad"
+                name="facultad"
                 value={formData.facultad}
                 onChange={handleChange}
                 className="mt-1 block w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:ring-yellow-400 focus:border-yellow-400"
@@ -177,8 +177,8 @@ const RegistrationForm = () => {
               </label>
               <input
                 type="text"
-                id="program"
-                name="program"
+                id="programa"
+                name="programa"
                 value={formData.programa}
                 onChange={handleChange}
                 className="mt-1 block w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:ring-yellow-400 focus:border-yellow-400"
@@ -189,15 +189,15 @@ const RegistrationForm = () => {
             {/* Semestre */}
             <div>
               <label
-                htmlFor="semester"
+                htmlFor="semestre"
                 className="block text-sm font-medium text-gray-300"
               >
                 Semestre
               </label>
               <input
                 type="number"
-                id="semester"
-                name="semester"
+                id="semestre"
+                name="semestre"
                 value={formData.semestre}
                 onChange={handleChange}
                 className="mt-1 block w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:ring-yellow-400 focus:border-yellow-400"
@@ -208,16 +208,16 @@ const RegistrationForm = () => {
             {/* Número de contacto */}
             <div>
               <label
-                htmlFor="contactNumber"
+                htmlFor="NumeroContacto"
                 className="block text-sm font-medium text-gray-300"
               >
                 Número de contacto
               </label>
               <input
                 type="tel"
-                id="contactNumber"
-                name="contactNumber"
-                value={formData.contactNumber}
+                id="NumeroContacto"
+                name="NumeroContacto"
+                value={formData.NumeroContacto}
                 onChange={handleChange}
                 className="mt-1 block w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:ring-yellow-400 focus:border-yellow-400"
                 required
@@ -227,15 +227,15 @@ const RegistrationForm = () => {
             {/* Perfil de LinkedIn o Facebook */}
             <div className="md:col-span-2">
               <label
-                htmlFor="socialMediaProfile"
+                htmlFor="linkedinOrFacebook"
                 className="block text-sm font-medium text-gray-300"
               >
                 Perfil de LinkedIn o Facebook
               </label>
               <input
                 type="url"
-                id="socialMediaProfile"
-                name="socialMediaProfile"
+                id="linkedinOrFacebooke"
+                name="linkedinOrFacebook"
                 value={formData.linkedinOrFacebook}
                 onChange={handleChange}
                 className="mt-1 block w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:ring-yellow-400 focus:border-yellow-400"
