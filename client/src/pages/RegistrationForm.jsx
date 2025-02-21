@@ -2,13 +2,13 @@ import React, { useState } from "react";
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
-    fullName: "",
+    name: "",
     email: "",
-    faculty: "",
-    program: "",
-    semester: "",
-    contactNumber: "",
-    socialMediaProfile: "",
+    facultad: "",
+    programa: "",
+    semestre: "",
+    NumeroContacto: "",
+    linkedinOrFacebook: "",
   });
 
   const handleChange = (e) => {
@@ -30,7 +30,7 @@ const RegistrationForm = () => {
 
     try {
       const response = await fetch(
-        "https://backend-curso-two.vercel.app/api/students",
+        "https://backend-curso-two.vercel.app/api/student",
         {
           method: "POST",
           headers: {
@@ -43,13 +43,13 @@ const RegistrationForm = () => {
       if (response.ok) {
         alert("¡Registro exitoso!");
         setFormData({
-          fullName: "",
+          name: "",
           email: "",
-          faculty: "",
-          program: "",
-          semester: "",
+          facultad: "",
+          programa: "",
+          semestre: "",
           contactNumber: "",
-          socialMediaProfile: "",
+          linkedinOrFacebook: "",
         });
       } else {
         alert("Hubo un error al registrar. Inténtalo de nuevo.");
@@ -122,7 +122,7 @@ const RegistrationForm = () => {
                 type="text"
                 id="fullName"
                 name="fullName"
-                value={formData.fullName}
+                value={formData.name}
                 onChange={handleChange}
                 className="mt-1 block w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:ring-yellow-400 focus:border-yellow-400"
                 required
@@ -160,7 +160,7 @@ const RegistrationForm = () => {
                 type="text"
                 id="faculty"
                 name="faculty"
-                value={formData.faculty}
+                value={formData.facultad}
                 onChange={handleChange}
                 className="mt-1 block w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:ring-yellow-400 focus:border-yellow-400"
                 required
@@ -179,7 +179,7 @@ const RegistrationForm = () => {
                 type="text"
                 id="program"
                 name="program"
-                value={formData.program}
+                value={formData.programa}
                 onChange={handleChange}
                 className="mt-1 block w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:ring-yellow-400 focus:border-yellow-400"
                 required
@@ -198,7 +198,7 @@ const RegistrationForm = () => {
                 type="number"
                 id="semester"
                 name="semester"
-                value={formData.semester}
+                value={formData.semestre}
                 onChange={handleChange}
                 className="mt-1 block w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:ring-yellow-400 focus:border-yellow-400"
                 required
@@ -236,7 +236,7 @@ const RegistrationForm = () => {
                 type="url"
                 id="socialMediaProfile"
                 name="socialMediaProfile"
-                value={formData.socialMediaProfile}
+                value={formData.linkedinOrFacebook}
                 onChange={handleChange}
                 className="mt-1 block w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:ring-yellow-400 focus:border-yellow-400"
                 placeholder="https://linkedin.com/in/tu-perfil"
