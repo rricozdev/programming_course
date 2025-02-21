@@ -8,6 +8,7 @@ import {
   DialogFooter,
 } from "../components/ui/dialog";
 import { CheckCircle, XCircle } from "lucide-react";
+import LoadingOverlay from "../components/LoadingOverlay";
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -23,6 +24,7 @@ const RegistrationForm = () => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const validate = () => {
     let newErrors = {};
@@ -82,6 +84,8 @@ const RegistrationForm = () => {
 
     if (!validate()) return;
 
+    setLoading(true);
+
     try {
       const response = await fetch(
         "https://backend-curso-two.vercel.app/api/student",
@@ -108,10 +112,14 @@ const RegistrationForm = () => {
       } else {
         setErrorMessage("Hubo un error al registrar. Inténtalo de nuevo.");
         setShowErrorModal(true);
-      }
+      } 
     } catch (error) {
       setErrorMessage("Error de conexión. Verifica tu internet e intenta de nuevo.");
       setShowErrorModal(true);
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000)
     }
   };
 
@@ -121,6 +129,7 @@ const RegistrationForm = () => {
 
   return (
     <div className="bg-gray-900 py-20">
+      {loading && < LoadingOverlay/>}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Success Modal */}
         <Dialog open={showSuccessModal} onOpenChange={setShowSuccessModal}>
@@ -340,9 +349,10 @@ const RegistrationForm = () => {
           <div className="mt-8 text-center">
             <button
               type="submit"
+              disabled={loading}
               className="bg-yellow-400 text-black px-8 py-3 rounded-lg text-lg font-semibold hover:bg-yellow-300 transform hover:scale-105 transition-all"
             >
-              Enviar Registro
+              {loading ? "Enviando..." : "Enviar Registro"}
             </button>
           </div>
         </form>

@@ -7,7 +7,7 @@ import { CiDatabase } from "react-icons/ci";
 import { SiExpress, SiSequelize, SiJavascript, SiMongodb } from "react-icons/si";
 
 import Program from "../components/Program";
-import LoadingOverlay from "../components/LoadingOverlay"; // Asegúrate de ajustar la ruta
+import LoadingOverlay from "../components/LoadingOverlay"; 
 import imageBg from "../assets/bgcurso2.jpg";
 import logo from "../assets/labs.png";
 
