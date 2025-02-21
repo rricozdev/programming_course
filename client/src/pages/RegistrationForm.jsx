@@ -10,6 +10,61 @@ const RegistrationForm = () => {
     Facultad: "",
     linkedinOrFacebook: "",
   });
+  const [errors, setErrors] = useState({});
+
+
+  const validate = () => {
+    let newErrors = {};
+  
+    // Validación de Nombre
+    if (!formData.name.trim()) {
+      newErrors.name = "El nombre es obligatorio.";
+    } else if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/.test(formData.name)) {
+      newErrors.name = "El nombre solo debe contener letras y espacios.";
+    }
+  
+    // Validación de Email
+    if (!formData.email.trim()) {
+      newErrors.email = "El email es obligatorio.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "El formato del email no es válido.";
+    }
+  
+    // Validación de Número de Contacto
+    if (!formData.NúmeroContacto.trim()) {
+      newErrors.NúmeroContacto = "El número de contacto es obligatorio.";
+    } else if (!/^\d+$/.test(formData.NúmeroContacto)) {
+      newErrors.NúmeroContacto = "El número de contacto solo debe contener dígitos.";
+    }
+  
+    // Validación de Programa
+    if (!formData.Programa.trim()) {
+      newErrors.Programa = "El programa es obligatorio.";
+    }
+  
+    // Validación de Semestre
+    if (!formData.Semestre.trim()) {
+      newErrors.Semestre = "El semestre es obligatorio.";
+    } else if (!/^\d+$/.test(formData.Semestre) || formData.Semestre < 1 || formData.Semestre > 10) {
+      newErrors.Semestre = "El semestre debe ser un número entre 1 y 10.";
+    }
+  
+    // Validación de Facultad
+    if (!formData.Facultad.trim()) {
+      newErrors.Facultad = "La facultad es obligatoria.";
+    }
+  
+    // Validación de LinkedIn o Facebook
+    if (!formData.linkedinOrFacebook.trim()) {
+      newErrors.linkedinOrFacebook = "El enlace de LinkedIn o Facebook es obligatorio.";
+    } else if (!/^https?:\/\/(www\.)?(linkedin|facebook)\.com\/.+$/.test(formData.linkedinOrFacebook)) {
+      newErrors.linkedinOrFacebook = "Debe ser un enlace válido de LinkedIn o Facebook.";
+    }
+  
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,6 +76,8 @@ const RegistrationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validate()) return; // Evita el envío si hay errores
 
     try {
       const response = await fetch(
@@ -175,6 +232,7 @@ const RegistrationForm = () => {
                 className="mt-1 block w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:ring-yellow-400 focus:border-yellow-400"
                 required
               />
+               {errors.Semestre && <p className="text-red-500 text-sm">{errors.Semestre}</p>}
             </div>
 
             {/* Número de contacto */}
