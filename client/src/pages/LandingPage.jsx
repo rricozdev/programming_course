@@ -107,11 +107,11 @@ const LandingPage = () => {
           <div className="md:hidden bg-gray-800">
             <div className="px-2 pt-2 pb-3 space-y-1">
               <button
-                onClick={handleClick}
+                onClick={scrollToContact}
                 disabled={loading}
                 className="block w-full text-center bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-300 disabled:opacity-75 disabled:cursor-not-allowed"
               >
-                Regístrate
+                Contáctanos
               </button>
             </div>
           </div>
