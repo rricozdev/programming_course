@@ -30,7 +30,7 @@ const RegistrationForm = () => {
 
     try {
       const response = await fetch(
-        "https://backend-curso-two.vercel.app/api/student",
+        "https://backend-curso-two.vercel.app/api/students",
         {
           method: "POST",
           headers: {
