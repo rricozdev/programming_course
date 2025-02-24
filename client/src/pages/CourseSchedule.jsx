@@ -136,7 +136,7 @@ const CourseSchedule = () => {
                       <div
                         className={`${module.color} w-2 h-full absolute left-0 top-0`}
                       />
-                      <h2 className="text-2xl font-bold text-white mb-4 group-hover:text-yellow-400 transition-colors">
+                      <h2 className="text-2xl font-bold text-gray-600 mt-2 mb-4 group-hover:text-yellow-400 transition-colors">
                         {module.title}
                       </h2>
 
