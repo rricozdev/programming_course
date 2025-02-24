@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Dialog,
   DialogContent,
@@ -7,7 +8,7 @@ import {
   DialogDescription,
   DialogFooter,
 } from "../components/ui/dialog";
-import { CheckCircle, XCircle } from "lucide-react";
+import { CheckCircle, Home, XCircle } from "lucide-react";
 import LoadingOverlay from "../components/LoadingOverlay";
 
 const RegistrationForm = () => {
@@ -25,6 +26,8 @@ const RegistrationForm = () => {
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+
 
   const validate = () => {
     let newErrors = {};
@@ -124,7 +127,10 @@ const RegistrationForm = () => {
   };
 
   const handleGoHome = () => {
-    window.location.href = "/";
+    setLoading(true);
+    setTimeout(() => {
+      navigate("/")
+    }, 1000)
   };
 
   return (
@@ -179,7 +185,7 @@ const RegistrationForm = () => {
 
         {/* Botón de Inicio */}
         <div className="mb-8">
-          <button
+          {/* <button
             onClick={handleGoHome}
             className="group flex items-center text-yellow-400 hover:text-yellow-300 transition-all duration-300 ease-in-out transform hover:translate-x-2 hover:scale-105 font-medium"
           >
@@ -200,6 +206,13 @@ const RegistrationForm = () => {
             <span className="relative cursor-pointer">
               Volver a Inicio
             </span>
+          </button> */}
+          <button
+            onClick={handleGoHome}
+            className="mt-6 px-4 py-2 flex items-center gap-2 bg-yellow-500 text-black rounded-lg hover:bg-yellow-400 cursor-pointer"
+          >
+            <Home className="w-5 h-5" />
+            Volver a inicio
           </button>
         </div>
 
