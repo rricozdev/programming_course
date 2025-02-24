@@ -413,6 +413,13 @@ const LandingPage = () => {
     }, 1000); // Ajusta el tiempo según sea necesario
   };
 
+  const handleSignatures = () => {
+    setLoading(true); // Mostrar el spinner
+    setTimeout(() => {
+      navigate("/consultas"); // Navegar después de un tiempo
+    }, 1000); // Ajusta el tiempo según sea necesario
+  };
+
   return (
     <div className="min-h-screen bg-gray-900">
       {loading && <LoadingOverlay />}{" "}
@@ -662,6 +669,15 @@ const LandingPage = () => {
         </div>
         {/* About section */}
         <About />
+        <div className="flex justify-center items-center">
+          <button
+            onClick={handleSignatures}
+            disabled={loading}
+            className="bg-yellow-400 text-black px-8 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-300 transform hover:scale-105 transition-all disabled:opacity-75 disabled:cursor-not-allowed cursor-pointer"
+          >
+            Consultas de Asignaturas
+          </button>
+        </div>
       </section>
       {/* Footer Section */}
       <Footer />
