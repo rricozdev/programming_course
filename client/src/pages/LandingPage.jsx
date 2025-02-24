@@ -333,7 +333,6 @@
 
 // export default LandingPage;
 
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -349,6 +348,7 @@ import {
 
 import Program from "../components/Program";
 import LoadingOverlay from "../components/LoadingOverlay";
+import About from "../components/About";
 import imageBg from "../assets/bgcurso2.jpg";
 import logo from "../assets/labs.png";
 import Footer from "../components/Footer";
@@ -415,14 +415,14 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-900">
-      {loading && <LoadingOverlay />} {/* Mostrar el spinner si loading es true */}
-
+      {loading && <LoadingOverlay />}{" "}
+      {/* Mostrar el spinner si loading es true */}
       {/* Navbar */}
       <nav className="fixed w-full bg-black/90 backdrop-blur-sm z-40">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0">
-              <img src={logo} alt="Logo" className="h-12 w-42" />
+              <img src={logo} alt="Logo" className="h-16 w-46" />
             </div>
 
             {/* Desktop Menu */}
@@ -462,7 +462,7 @@ const LandingPage = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-gray-800">
             <div className="px-2 pt-2 pb-3 space-y-1">
-            <button
+              <button
                 onClick={handleClickCronograma}
                 disabled={loading}
                 className="block w-full text-center bg-slate-900 p-4 text-white px-4 py-2 rounded-lg hover:bg-slate-600 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed mb-4"
@@ -479,7 +479,6 @@ const LandingPage = () => {
           </div>
         )}
       </nav>
-
       {/* Hero Section */}
       <section className="pt-16">
         <div className="relative h-screen">
@@ -524,10 +523,8 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-
       {/* Program Section */}
       <Program />
-
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -663,8 +660,9 @@ const LandingPage = () => {
             </div>
           </div>
         </div>
+        {/* About section */}
+        <About />
       </section>
-
       {/* Footer Section */}
       <Footer />
     </div>
