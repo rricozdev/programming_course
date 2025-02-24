@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent } from "../components/ui/card";
+import LoadingOverlay from "../components/LoadingOverlay";
 import Footer from "../components/Footer";
+import FloatButton from "../components/FloatButton";
+
 import { format, addWeeks } from "date-fns";
 import { es } from "date-fns/locale";
-import { Calendar, Clock, Users, ArrowLeft, Check, Pencil } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Calendar, Clock, Home, Users, ArrowLeft, Check, Pencil } from "lucide-react";
 import image_0 from "../assets/modulo_0.jpg";
 import image_1 from "../assets/modulo_1.jpg";
 import image_2 from "../assets/modulo_3.jpg";
@@ -12,6 +15,7 @@ import image_3 from "../assets/modulo_2.jpg";
 
 const CourseSchedule = () => {
   const navigate = useNavigate();
+  const [loanding, setLoading] = useState(false);
   const module0Start = new Date(2025, 2, 17);
   const module0Weeks = 3;
   const module0End = addWeeks(module0Start, module0Weeks);
@@ -100,8 +104,16 @@ const CourseSchedule = () => {
     },
   ];
 
+  const handleGoHome = () =>{
+    setLoading(true);
+    setTimeout(() => {
+      navigate("/")
+    }, 1000)
+  }
+
   return (
     <div className="min-h-screen bg-gray-900 flex flex-col">
+      {loanding && <LoadingOverlay />}{" "}
       <div className="flex-1">
         <div className="max-w-7xl mx-auto px-4 py-16">
           <div className="flex items-center justify-between mb-12">
@@ -109,12 +121,12 @@ const CourseSchedule = () => {
               Cronograma del <span className="text-yellow-400">Curso</span>
             </h1>
             <button
-              onClick={() => navigate("/")}
-              className="flex items-center gap-2 bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-300 transition-colors cursor-pointer"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              Volver al inicio
-            </button>
+            onClick={handleGoHome}
+            className="mt-6 px-4 py-2 flex items-center gap-2 bg-yellow-500 text-black rounded-lg hover:bg-yellow-400 cursor-pointer"
+          >
+            <Home className="w-5 h-5" />
+            Volver a inicio
+          </button>
           </div>
 
           <div className="grid gap-8">
@@ -201,17 +213,10 @@ const CourseSchedule = () => {
             ))}
           </div>
           <div className="py-4">
-            <button
-              onClick={() => navigate("/")}
-              className="flex items-center gap-2 bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-300 transition-colors cursor-pointer"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              Volver al inicio
-            </button>
+            <FloatButton onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} />
           </div>
         </div>
       </div>
-
       {/* Footer Section */}
       <Footer />
     </div>
