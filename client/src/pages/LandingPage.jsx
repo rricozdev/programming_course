@@ -422,8 +422,8 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-900">
-      {loading && <LoadingOverlay />}{" "}
       {/* Mostrar el spinner si loading es true */}
+      {loading && <LoadingOverlay />}{" "}
       {/* Navbar */}
       <nav className="fixed w-full bg-black/90 backdrop-blur-sm z-40">
         <div className="max-w-7xl mx-auto px-4">
