@@ -200,7 +200,7 @@ const CourseSchedule = () => {
                       </ul>
 
                       <button
-                        onClick={() => navigate("/")}
+                        onClick={() => navigate("/registro")}
                         className="flex items-center gap-2 bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-300 transition-colors cursor-pointer"
                       >
                         <Pencil className="w-5 h-5" />
