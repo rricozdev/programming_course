@@ -20,100 +20,208 @@ import image_14 from "../assets/image_cloud_compt.jpg";
 import image_15 from "../assets/image_sqa.jpg";
 import Footer from "../components/Footer";
 
+// const asignaturas = [
+//   {
+//     nombre: "Cálculo Diferencial",
+//     imagen: image_1,
+//     descripcion:
+//       "Permite modelar cambios en sistemas y analizar tasas de variación, fundamentales en simulaciones y optimización de algoritmos.",
+//   },
+//   {
+//     nombre: "Cálculo Integral",
+//     imagen: image_2,
+//     descripcion:
+//       "Se usa en análisis de áreas, volúmenes y acumulación de datos, útil en gráficos computacionales y procesamiento de señales.",
+//   },
+//   {
+//     nombre: "Álgebra Lineal",
+//     imagen: image_3,
+//     descripcion:
+//       "Base para gráficos por computadora, inteligencia artificial y manipulación de datos en grandes volúmenes.",
+//   },
+//   {
+//     nombre: "Algoritmos y Principios de Programación",
+//     imagen: image_4,
+//     descripcion:
+//       "Fundamenta la lógica de la programación y el diseño eficiente de soluciones computacionales.",
+//   },
+//   {
+//     nombre: "Introducción a la Ingeniería de Software",
+//     imagen: image_5,
+//     descripcion:
+//       "Proporciona los fundamentos del desarrollo de software, metodologías y ciclo de vida de los sistemas.",
+//   },
+//   {
+//     nombre: "TGS",
+//     imagen: image_6,
+//     descripcion:
+//       "La Teoría General de Sistemas ayuda a comprender la interconexión entre componentes en el desarrollo de software.",
+//   },
+//   {
+//     nombre: "POO",
+//     imagen: image_7,
+//     descripcion:
+//       "La Programación Orientada a Objetos permite modelar sistemas complejos con reutilización y encapsulamiento de código.",
+//   },
+//   {
+//     nombre: "Ingeniería de Requerimientos",
+//     imagen: image_8,
+//     descripcion:
+//       "Se enfoca en la recopilación y análisis de necesidades para el desarrollo de software de calidad.",
+//   },
+//   {
+//     nombre: "Estructuras de Datos",
+//     imagen: image_9,
+//     descripcion:
+//       "Optimiza la gestión y manipulación de datos en aplicaciones, mejorando eficiencia y rendimiento.",
+//   },
+//   {
+//     nombre: "Cálculo Vectorial",
+//     imagen: image_10,
+//     descripcion:
+//       "Esencial en gráficos 3D, simulaciones físicas y cálculos en procesamiento de imágenes.",
+//   },
+//   {
+//     nombre: "Bases de Datos",
+//     imagen: image_11,
+//     descripcion:
+//       "Permite almacenar, gestionar y recuperar información estructurada en sistemas informáticos.",
+//   },
+//   {
+//     nombre: "Programación Distribuida",
+//     imagen: image_12,
+//     descripcion:
+//       "Facilita el desarrollo de sistemas escalables y concurrentes mediante múltiples nodos interconectados.",
+//   },
+//   {
+//     nombre: "Arquitectura de Software",
+//     imagen: image_13,
+//     descripcion:
+//       "Define la estructura y organización de sistemas, garantizando mantenibilidad y escalabilidad.",
+//   },
+//   {
+//     nombre: "Fundamentos de Computación en la Nube",
+//     imagen: image_14,
+//     descripcion:
+//       "Comprende los modelos y servicios en la nube para desarrollo y despliegue de aplicaciones escalables.",
+//   },
+//   {
+//     nombre: "SQA - Software Quality Assurance",
+//     imagen: image_15,
+//     descripcion:
+//       "Garantiza la calidad del software mediante pruebas y metodologías de aseguramiento.",
+//   },
+// ];
+
 const asignaturas = [
   {
     nombre: "Cálculo Diferencial",
     imagen: image_1,
     descripcion:
       "Permite modelar cambios en sistemas y analizar tasas de variación, fundamentales en simulaciones y optimización de algoritmos.",
+    whatsapp: "573205510452",
   },
   {
     nombre: "Cálculo Integral",
     imagen: image_2,
     descripcion:
       "Se usa en análisis de áreas, volúmenes y acumulación de datos, útil en gráficos computacionales y procesamiento de señales.",
+    whatsapp: "573205510452",
   },
   {
     nombre: "Álgebra Lineal",
     imagen: image_3,
     descripcion:
       "Base para gráficos por computadora, inteligencia artificial y manipulación de datos en grandes volúmenes.",
+    whatsapp: "573205510452",
   },
   {
     nombre: "Algoritmos y Principios de Programación",
     imagen: image_4,
     descripcion:
       "Fundamenta la lógica de la programación y el diseño eficiente de soluciones computacionales.",
+    whatsapp: "573135344581",
   },
   {
     nombre: "Introducción a la Ingeniería de Software",
     imagen: image_5,
     descripcion:
       "Proporciona los fundamentos del desarrollo de software, metodologías y ciclo de vida de los sistemas.",
+    whatsapp: "573135344581",
   },
   {
     nombre: "TGS",
     imagen: image_6,
     descripcion:
       "La Teoría General de Sistemas ayuda a comprender la interconexión entre componentes en el desarrollo de software.",
+    whatsapp: "573205510452",
   },
   {
     nombre: "POO",
     imagen: image_7,
     descripcion:
       "La Programación Orientada a Objetos permite modelar sistemas complejos con reutilización y encapsulamiento de código.",
+    whatsapp: "573205510452",
   },
   {
     nombre: "Ingeniería de Requerimientos",
     imagen: image_8,
     descripcion:
       "Se enfoca en la recopilación y análisis de necesidades para el desarrollo de software de calidad.",
+    whatsapp: "573135344581",
   },
   {
     nombre: "Estructuras de Datos",
     imagen: image_9,
     descripcion:
       "Optimiza la gestión y manipulación de datos en aplicaciones, mejorando eficiencia y rendimiento.",
+    whatsapp: "573135344581",
   },
   {
     nombre: "Cálculo Vectorial",
     imagen: image_10,
     descripcion:
       "Esencial en gráficos 3D, simulaciones físicas y cálculos en procesamiento de imágenes.",
+    whatsapp: "573205510452",
   },
   {
     nombre: "Bases de Datos",
     imagen: image_11,
     descripcion:
       "Permite almacenar, gestionar y recuperar información estructurada en sistemas informáticos.",
+    whatsapp: "573135344581",
   },
   {
     nombre: "Programación Distribuida",
     imagen: image_12,
     descripcion:
       "Facilita el desarrollo de sistemas escalables y concurrentes mediante múltiples nodos interconectados.",
+    whatsapp: "573135344581",
   },
   {
     nombre: "Arquitectura de Software",
     imagen: image_13,
     descripcion:
       "Define la estructura y organización de sistemas, garantizando mantenibilidad y escalabilidad.",
+    whatsapp: "573135344581",
   },
   {
     nombre: "Fundamentos de Computación en la Nube",
     imagen: image_14,
     descripcion:
       "Comprende los modelos y servicios en la nube para desarrollo y despliegue de aplicaciones escalables.",
+    whatsapp: "573205510452",
   },
   {
     nombre: "SQA - Software Quality Assurance",
     imagen: image_15,
     descripcion:
       "Garantiza la calidad del software mediante pruebas y metodologías de aseguramiento.",
+    whatsapp: "573135344581",
   },
 ];
 
-const whatsappNumber = "573135344581";
+// const whatsappNumber = "573135344581";
 
 const ConsultasAsignaturas = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -211,7 +319,9 @@ const ConsultasAsignaturas = () => {
                 <p className="text-gray-300">{asignatura.descripcion}</p>
               </div>
               <a
-                href={`https://wa.me/${whatsappNumber}?text=Hola,%20quiero%20hacer%20una%20consulta%20sobre%20${encodeURIComponent(
+                href={`https://wa.me/${
+                  asignatura.whatsapp
+                }?text=Hola,%20quiero%20hacer%20una%20consulta%20sobre%20${encodeURIComponent(
                   asignatura.nombre
                 )}`}
                 target="_blank"
@@ -233,29 +343,6 @@ const ConsultasAsignaturas = () => {
             </div>
           ))}
         </div>
-
-        {/* <div className="flex justify-center mt-12">
-          <button
-            onClick={handleClick}
-            className="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg font-semibold transition duration-300 flex items-center shadow-lg cursor-pointer"
-          >
-            <svg
-              className="w-5 h-5 mr-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M3 12l9-9m0 0l9 9m-9-9v18"
-              ></path>
-            </svg>
-            Volver a Inicio
-          </button>
-        </div> */}
       </div>
       {/* Improved footer integration */}
       <div className="mt-16">
