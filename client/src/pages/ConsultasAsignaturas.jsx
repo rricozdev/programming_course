@@ -20,98 +20,6 @@ import image_14 from "../assets/image_cloud_compt.jpg";
 import image_15 from "../assets/image_sqa.jpg";
 import Footer from "../components/Footer";
 
-// const asignaturas = [
-//   {
-//     nombre: "Cálculo Diferencial",
-//     imagen: image_1,
-//     descripcion:
-//       "Permite modelar cambios en sistemas y analizar tasas de variación, fundamentales en simulaciones y optimización de algoritmos.",
-//   },
-//   {
-//     nombre: "Cálculo Integral",
-//     imagen: image_2,
-//     descripcion:
-//       "Se usa en análisis de áreas, volúmenes y acumulación de datos, útil en gráficos computacionales y procesamiento de señales.",
-//   },
-//   {
-//     nombre: "Álgebra Lineal",
-//     imagen: image_3,
-//     descripcion:
-//       "Base para gráficos por computadora, inteligencia artificial y manipulación de datos en grandes volúmenes.",
-//   },
-//   {
-//     nombre: "Algoritmos y Principios de Programación",
-//     imagen: image_4,
-//     descripcion:
-//       "Fundamenta la lógica de la programación y el diseño eficiente de soluciones computacionales.",
-//   },
-//   {
-//     nombre: "Introducción a la Ingeniería de Software",
-//     imagen: image_5,
-//     descripcion:
-//       "Proporciona los fundamentos del desarrollo de software, metodologías y ciclo de vida de los sistemas.",
-//   },
-//   {
-//     nombre: "TGS",
-//     imagen: image_6,
-//     descripcion:
-//       "La Teoría General de Sistemas ayuda a comprender la interconexión entre componentes en el desarrollo de software.",
-//   },
-//   {
-//     nombre: "POO",
-//     imagen: image_7,
-//     descripcion:
-//       "La Programación Orientada a Objetos permite modelar sistemas complejos con reutilización y encapsulamiento de código.",
-//   },
-//   {
-//     nombre: "Ingeniería de Requerimientos",
-//     imagen: image_8,
-//     descripcion:
-//       "Se enfoca en la recopilación y análisis de necesidades para el desarrollo de software de calidad.",
-//   },
-//   {
-//     nombre: "Estructuras de Datos",
-//     imagen: image_9,
-//     descripcion:
-//       "Optimiza la gestión y manipulación de datos en aplicaciones, mejorando eficiencia y rendimiento.",
-//   },
-//   {
-//     nombre: "Cálculo Vectorial",
-//     imagen: image_10,
-//     descripcion:
-//       "Esencial en gráficos 3D, simulaciones físicas y cálculos en procesamiento de imágenes.",
-//   },
-//   {
-//     nombre: "Bases de Datos",
-//     imagen: image_11,
-//     descripcion:
-//       "Permite almacenar, gestionar y recuperar información estructurada en sistemas informáticos.",
-//   },
-//   {
-//     nombre: "Programación Distribuida",
-//     imagen: image_12,
-//     descripcion:
-//       "Facilita el desarrollo de sistemas escalables y concurrentes mediante múltiples nodos interconectados.",
-//   },
-//   {
-//     nombre: "Arquitectura de Software",
-//     imagen: image_13,
-//     descripcion:
-//       "Define la estructura y organización de sistemas, garantizando mantenibilidad y escalabilidad.",
-//   },
-//   {
-//     nombre: "Fundamentos de Computación en la Nube",
-//     imagen: image_14,
-//     descripcion:
-//       "Comprende los modelos y servicios en la nube para desarrollo y despliegue de aplicaciones escalables.",
-//   },
-//   {
-//     nombre: "SQA - Software Quality Assurance",
-//     imagen: image_15,
-//     descripcion:
-//       "Garantiza la calidad del software mediante pruebas y metodologías de aseguramiento.",
-//   },
-// ];
 
 const asignaturas = [
   {
@@ -221,7 +129,6 @@ const asignaturas = [
   },
 ];
 
-// const whatsappNumber = "573135344581";
 
 const ConsultasAsignaturas = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
