@@ -113,9 +113,8 @@ const RegistrationForm = () => {
           linkedinOrFacebook: "",
         });
         // Redirigir automáticamente a WhatsApp después del registro exitoso
-        setTimeout(() => {
-          window.open = "https://chat.whatsapp.com/BURt1usoDSF2Jl2re5DNML", "_blank";
-        }, 2000); // Espera 2 segundos antes de redirigir
+        // Abrir WhatsApp inmediatamente después del registro exitoso
+      window.open("https://chat.whatsapp.com/BURt1usoDSF2Jl2re5DNML", "_blank");
       } else {
         setErrorMessage("Hubo un error al registrar. Inténtalo de nuevo.");
         setShowErrorModal(true);
