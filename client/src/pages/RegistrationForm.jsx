@@ -114,7 +114,7 @@ const RegistrationForm = () => {
         });
         // Redirigir automáticamente a WhatsApp después del registro exitoso
         setTimeout(() => {
-          window.location.href = "https://chat.whatsapp.com/BURt1usoDSF2Jl2re5DNML";
+          window.open = "https://chat.whatsapp.com/BURt1usoDSF2Jl2re5DNML", "_blank";
         }, 2000); // Espera 2 segundos antes de redirigir
       } else {
         setErrorMessage("Hubo un error al registrar. Inténtalo de nuevo.");
