@@ -193,9 +193,7 @@ const LandingPage = () => {
                   <div className="bg-gradient-to-r from-black to-gray-900 rounded-xl overflow-hidden shadow-2xl border border-yellow-500">
                     <div className="p-6">
                       <div className="text-center mb-3">
-                        <p className="text-yellow-400 text-xl uppercase font-semibold">
-                          Oferta por tiempo limitado
-                        </p>
+                        <p className="text-yellow-400 text-xl uppercase font-semibold"></p>
                       </div>
 
                       <div className="text-center mb-4">
@@ -205,7 +203,7 @@ const LandingPage = () => {
                             COP
                           </span>
                           <span className="text-white text-4xl font-bold">
-                            29.999
+                            59.999
                           </span>
                           <span className="text-yellow-400 text-xl ml-1">
                             /MES
@@ -244,13 +242,13 @@ const LandingPage = () => {
                         disabled={loading}
                         className="w-full bg-yellow-400 text-black px-4 py-3 rounded-lg text-lg font-semibold hover:bg-yellow-300 transform hover:scale-105 transition-all disabled:opacity-75 disabled:cursor-not-allowed cursor-pointer flex justify-center items-center"
                       >
-                        APROVECHA AHORA
+                        COMENZAR
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </button>
 
                       <p className="text-gray-500 text-xs mt-4 text-center">
-                        *Después del periodo promocional (fecha límite marzo 15 del 2025), se aplicará el precio
-                        regular de COP 59.999/mes.
+                        Aprende a programar y abre las puertas a nuevas
+                        oportunidades. ¡El mejor momento para empezar es ahora!.
                       </p>
 
                       <div className="mt-4 text-sm">
