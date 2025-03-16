@@ -42,7 +42,7 @@ const PaymentPage = () => {
         {/* Card con información de precio */}
         <div className="bg-gray-700 rounded-lg p-4 mb-6 border-l-4 border-yellow-400">
           <p className="text-lg text-white mb-2 font-medium">Precio del curso:</p>
-          <p className="text-2xl font-bold text-yellow-400">$59.999 COP/MES</p>
+          <p className="text-2xl font-bold text-yellow-400">$29.999 COP/MES</p>
           <p className="text-gray-300 text-sm">Plan de 6 meses</p>
         </div>
 
