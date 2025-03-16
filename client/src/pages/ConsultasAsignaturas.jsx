@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import LoadingOverlay from "../components/LoadingOverlay";
-import { Home } from "lucide-react";
+import { Home, Library } from "lucide-react";
 
 import image_1 from "../assets/image_cal_dif.jpg";
 import image_2 from "../assets/image_cal_int.jpg";
@@ -190,7 +190,7 @@ const ConsultasAsignaturas = () => {
         {/* Improved main paragraph with better styling and layout */}
         <div className="max-w-3xl mx-auto mb-12 bg-gray-800 bg-opacity-50 p-6 rounded-xl border-l-4 border-yellow-400 shadow-lg">
           <div className="flex items-start">
-            <div className="text-3xl text-yellow-400 mr-4">📚</div>
+            <div className="text-3xl text-yellow-400 mr-4"><Library/></div>
             <p className="text-lg leading-relaxed">
               ¿Tienes tareas que hacer y no entiendes el tema? 🤯 No te
               preocupes, estamos aquí para ayudarte. Si estás atascado con

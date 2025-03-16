@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
+import PaymentPage from "./pages/PaymentPage";
 import RegistrationForm from "./pages/RegistrationForm";
 import CourseSchedule from "./pages/CourseSchedule";
 import ConsultasAsignaturas from "./pages/ConsultasAsignaturas";
@@ -11,6 +12,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/payment" element={<PaymentPage />} />
         <Route path="/registro" element={<RegistrationForm />} />
         <Route path="/cronograma" element={<CourseSchedule />} />
         <Route path="/consultas" element={<ConsultasAsignaturas />} />
