@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import LoadingOverlay from "../components/LoadingOverlay";
-import { Home, Library } from "lucide-react";
+import {
+  Home,
+  Library,
+  MessageCircle,
+  BookOpen,
+  ArrowUp,
+  Zap,
+  Users,
+  Clock,
+  CheckCircle,
+  Star,
+} from "lucide-react";
 
 import image_1 from "../assets/image_cal_dif.jpg";
 import image_2 from "../assets/image_cal_int.jpg";
@@ -20,7 +31,6 @@ import image_14 from "../assets/image_cloud_compt.jpg";
 import image_15 from "../assets/image_sqa.jpg";
 import Footer from "../components/Footer";
 
-
 const asignaturas = [
   {
     nombre: "Cálculo Diferencial",
@@ -28,6 +38,8 @@ const asignaturas = [
     descripcion:
       "Permite modelar cambios en sistemas y analizar tasas de variación, fundamentales en simulaciones y optimización de algoritmos.",
     whatsapp: "573205510452",
+    categoria: "Matemáticas",
+    dificultad: "Intermedio",
   },
   {
     nombre: "Cálculo Integral",
@@ -35,6 +47,8 @@ const asignaturas = [
     descripcion:
       "Se usa en análisis de áreas, volúmenes y acumulación de datos, útil en gráficos computacionales y procesamiento de señales.",
     whatsapp: "573205510452",
+    categoria: "Matemáticas",
+    dificultad: "Intermedio",
   },
   {
     nombre: "Álgebra Lineal",
@@ -42,6 +56,8 @@ const asignaturas = [
     descripcion:
       "Base para gráficos por computadora, inteligencia artificial y manipulación de datos en grandes volúmenes.",
     whatsapp: "573205510452",
+    categoria: "Matemáticas",
+    dificultad: "Básico",
   },
   {
     nombre: "Algoritmos y Principios de Programación",
@@ -49,6 +65,8 @@ const asignaturas = [
     descripcion:
       "Fundamenta la lógica de la programación y el diseño eficiente de soluciones computacionales.",
     whatsapp: "573135344581",
+    categoria: "Programación",
+    dificultad: "Básico",
   },
   {
     nombre: "Introducción a la Ingeniería de Software",
@@ -56,6 +74,8 @@ const asignaturas = [
     descripcion:
       "Proporciona los fundamentos del desarrollo de software, metodologías y ciclo de vida de los sistemas.",
     whatsapp: "573135344581",
+    categoria: "Ingeniería",
+    dificultad: "Básico",
   },
   {
     nombre: "TGS",
@@ -63,6 +83,8 @@ const asignaturas = [
     descripcion:
       "La Teoría General de Sistemas ayuda a comprender la interconexión entre componentes en el desarrollo de software.",
     whatsapp: "573205510452",
+    categoria: "Teoría",
+    dificultad: "Intermedio",
   },
   {
     nombre: "POO",
@@ -70,6 +92,8 @@ const asignaturas = [
     descripcion:
       "La Programación Orientada a Objetos permite modelar sistemas complejos con reutilización y encapsulamiento de código.",
     whatsapp: "573205510452",
+    categoria: "Programación",
+    dificultad: "Intermedio",
   },
   {
     nombre: "Ingeniería de Requerimientos",
@@ -77,6 +101,8 @@ const asignaturas = [
     descripcion:
       "Se enfoca en la recopilación y análisis de necesidades para el desarrollo de software de calidad.",
     whatsapp: "573135344581",
+    categoria: "Ingeniería",
+    dificultad: "Intermedio",
   },
   {
     nombre: "Estructuras de Datos",
@@ -84,6 +110,8 @@ const asignaturas = [
     descripcion:
       "Optimiza la gestión y manipulación de datos en aplicaciones, mejorando eficiencia y rendimiento.",
     whatsapp: "573135344581",
+    categoria: "Programación",
+    dificultad: "Avanzado",
   },
   {
     nombre: "Cálculo Vectorial",
@@ -91,6 +119,8 @@ const asignaturas = [
     descripcion:
       "Esencial en gráficos 3D, simulaciones físicas y cálculos en procesamiento de imágenes.",
     whatsapp: "573205510452",
+    categoria: "Matemáticas",
+    dificultad: "Avanzado",
   },
   {
     nombre: "Bases de Datos",
@@ -98,6 +128,8 @@ const asignaturas = [
     descripcion:
       "Permite almacenar, gestionar y recuperar información estructurada en sistemas informáticos.",
     whatsapp: "573135344581",
+    categoria: "Datos",
+    dificultad: "Intermedio",
   },
   {
     nombre: "Programación Distribuida",
@@ -105,6 +137,8 @@ const asignaturas = [
     descripcion:
       "Facilita el desarrollo de sistemas escalables y concurrentes mediante múltiples nodos interconectados.",
     whatsapp: "573135344581",
+    categoria: "Programación",
+    dificultad: "Avanzado",
   },
   {
     nombre: "Arquitectura de Software",
@@ -112,6 +146,8 @@ const asignaturas = [
     descripcion:
       "Define la estructura y organización de sistemas, garantizando mantenibilidad y escalabilidad.",
     whatsapp: "573135344581",
+    categoria: "Ingeniería",
+    dificultad: "Avanzado",
   },
   {
     nombre: "Fundamentos de Computación en la Nube",
@@ -119,6 +155,8 @@ const asignaturas = [
     descripcion:
       "Comprende los modelos y servicios en la nube para desarrollo y despliegue de aplicaciones escalables.",
     whatsapp: "573205510452",
+    categoria: "Cloud",
+    dificultad: "Intermedio",
   },
   {
     nombre: "SQA - Software Quality Assurance",
@@ -126,14 +164,30 @@ const asignaturas = [
     descripcion:
       "Garantiza la calidad del software mediante pruebas y metodologías de aseguramiento.",
     whatsapp: "573135344581",
+    categoria: "Testing",
+    dificultad: "Avanzado",
   },
 ];
 
-
 const ConsultasAsignaturas = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [loading, setLoading] = useState(false); // Mantenemos el estado de carga
+  const [loading, setLoading] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("Todas");
   const navigate = useNavigate();
+
+  // Obtener categorías únicas
+  const categories = [
+    "Todas",
+    ...new Set(asignaturas.map((asignatura) => asignatura.categoria)),
+  ];
+
+  // Filtrar asignaturas por categoría
+  const filteredAsignaturas =
+    selectedCategory === "Todas"
+      ? asignaturas
+      : asignaturas.filter(
+          (asignatura) => asignatura.categoria === selectedCategory
+        );
 
   useEffect(() => {
     const checkScrollTop = () => {
@@ -158,125 +212,251 @@ const ConsultasAsignaturas = () => {
   };
 
   const handleClick = () => {
-    setLoading(true); // Mostrar el spinner
+    setLoading(true);
     setTimeout(() => {
-      navigate("/"); // Navegar después de un tiempo
-    }, 1000); // Ajusta el tiempo según sea necesario
+      navigate("/");
+    }, 1000);
+  };
+
+  const getDifficultyColor = (dificultad) => {
+    switch (dificultad) {
+      case "Básico":
+        return "bg-green-500/20 text-green-400 border-green-500/30";
+      case "Intermedio":
+        return "bg-yellow-500/20 text-yellow-400 border-yellow-500/30";
+      case "Avanzado":
+        return "bg-red-500/20 text-red-400 border-red-500/30";
+      default:
+        return "bg-gray-500/20 text-gray-400 border-gray-500/30";
+    }
+  };
+
+  const getCategoryColor = (categoria) => {
+    const colors = {
+      Matemáticas: "bg-blue-500/20 text-blue-400",
+      Programación: "bg-purple-500/20 text-purple-400",
+      Ingeniería: "bg-green-500/20 text-green-400",
+      Datos: "bg-cyan-500/20 text-cyan-400",
+      Cloud: "bg-indigo-500/20 text-indigo-400",
+      Testing: "bg-pink-500/20 text-pink-400",
+      Teoría: "bg-orange-500/20 text-orange-400",
+    };
+    return colors[categoria] || "bg-gray-500/20 text-gray-400";
   };
 
   return (
     <div
-      className="bg-gradient-to-b from-gray-900 to-gray-800 text-white min-h-screen flex flex-col"
+      className="bg-gray-900 text-white min-h-screen flex flex-col"
       id="inicio"
     >
-      {loading && <LoadingOverlay />}{" "}
-      <div className="container mx-auto px-4 py-10 flex-grow">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-4xl font-bold text-center relative flex-grow">
-            Consultas de{" "}
-            <span className="text-yellow-400 relative inline-block">
-              Ingeniería de Software
-              <span className="absolute -bottom-2 left-0 w-full h-1 bg-yellow-400 rounded-full"></span>
-            </span>
-          </h2>
-          <button
-            onClick={handleClick}
-            className="mt-6 px-4 py-2 flex items-center gap-2 bg-yellow-500 text-black rounded-lg hover:bg-yellow-400 cursor-pointer"
-          >
-            <Home className="w-5 h-5" />
-            Volver a inicio
-          </button>
+      {loading && <LoadingOverlay />}
+
+      {/* Header mejorado */}
+      <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border-b border-gray-700">
+        <div className="container mx-auto px-4 py-8">
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center px-4 py-2 bg-yellow-400/10 rounded-full mb-4">
+                <BookOpen className="w-4 h-4 text-yellow-400 mr-2" />
+                <span className="text-yellow-400 text-sm font-medium">
+                  Apoyo académico
+                </span>
+              </div>
+              <h1 className="text-4xl lg:text-5xl font-bold mb-2">
+                Consultas de{" "}
+                <span className="text-yellow-400 relative inline-block">
+                  Ingeniería de Software
+                  <span className="absolute -bottom-2 left-0 w-full h-1 bg-yellow-400 rounded-full"></span>
+                </span>
+              </h1>
+              <p className="text-gray-300 text-lg max-w-2xl">
+                Resuelve tus dudas académicas con expertos en cada materia
+              </p>
+            </div>
+
+            <button
+              onClick={handleClick}
+              className="flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
+            >
+              <Home className="w-5 h-5" />
+              Volver a inicio
+            </button>
+          </div>
         </div>
-        {/* Improved main paragraph with better styling and layout */}
-        <div className="max-w-3xl mx-auto mb-12 bg-gray-800 bg-opacity-50 p-6 rounded-xl border-l-4 border-yellow-400 shadow-lg">
-          <div className="flex items-start">
-            <div className="text-3xl text-yellow-400 mr-4"><Library/></div>
-            <p className="text-lg leading-relaxed">
-              ¿Tienes tareas que hacer y no entiendes el tema? 🤯 No te
-              preocupes, estamos aquí para ayudarte. Si estás atascado con
-              ejercicios de cálculo, estructuras de datos o cualquier otra
-              asignatura, podemos guiarte paso a paso. No pierdas más tiempo
-              buscando respuestas en internet, consulta con nosotros y resuelve
-              tus dudas al instante. ¡Haz que tus tareas sean más fáciles y
-              aprende de verdad! 🚀✨
+      </div>
+
+      {/* Estadísticas y beneficios */}
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700 text-center">
+            <div className="bg-yellow-400/10 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+              <Clock className="w-6 h-6 text-yellow-400" />
+            </div>
+            <h3 className="text-xl font-semibold text-white mb-2">
+              Respuesta rápida
+            </h3>
+            <p className="text-gray-300 text-sm">
+              Atención inmediata vía WhatsApp
+            </p>
+          </div>
+
+          <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700 text-center">
+            <div className="bg-yellow-400/10 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+              <Users className="w-6 h-6 text-yellow-400" />
+            </div>
+            <h3 className="text-xl font-semibold text-white mb-2">
+              Expertos certificados
+            </h3>
+            <p className="text-gray-300 text-sm">
+              Profesores con experiencia real
+            </p>
+          </div>
+
+          <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700 text-center">
+            <div className="bg-yellow-400/10 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+              <CheckCircle className="w-6 h-6 text-yellow-400" />
+            </div>
+            <h3 className="text-xl font-semibold text-white mb-2">
+              Solución garantizada
+            </h3>
+            <p className="text-gray-300 text-sm">
+              Te ayudamos hasta resolver tu duda
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {asignaturas.map((asignatura, index) => (
+        {/* Descripción principal mejorada */}
+        <div className="max-w-4xl mx-auto mb-12">
+          <div className="bg-gradient-to-r from-yellow-400/10 to-yellow-500/5 rounded-2xl p-8 border border-yellow-400/20">
+            <div className="flex items-start">
+              <div className="bg-yellow-400/20 rounded-xl p-3 mr-6">
+                <Library className="w-8 h-8 text-yellow-400" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold text-white mb-4">
+                  ¿Atascado con tus tareas?{" "}
+                  <span className="text-yellow-400">
+                    ¡Estamos aquí para ayudarte!
+                  </span>
+                </h2>
+                <p className="text-lg text-gray-300 leading-relaxed mb-6">
+                  No pierdas más tiempo buscando respuestas en internet.
+                  Nuestros expertos te guían paso a paso para que no solo
+                  resuelvas tus tareas, sino que aprendas de verdad. Desde
+                  cálculo hasta arquitectura de software, tenemos la solución
+                  que necesitas.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <div className="flex items-center text-yellow-400">
+                    <Star className="w-4 h-4 mr-2" />
+                    <span className="text-sm">Explicación paso a paso</span>
+                  </div>
+                  <div className="flex items-center text-yellow-400">
+                    <Zap className="w-4 h-4 mr-2" />
+                    <span className="text-sm">Resolución al instante</span>
+                  </div>
+                  <div className="flex items-center text-yellow-400">
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    <span className="text-sm">
+                      Contacto directo por WhatsApp
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Filtros por categoría */}
+        <div className="mb-8">
+          <h3 className="text-xl font-semibold text-white mb-4">
+            Filtrar por categoría:
+          </h3>
+          <div className="flex flex-wrap gap-3">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                  selectedCategory === category
+                    ? "bg-yellow-400 text-gray-900"
+                    : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Grid de asignaturas mejorado */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          {filteredAsignaturas.map((asignatura, index) => (
             <div
               key={index}
-              className="bg-gray-800 rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl border border-gray-700 flex flex-col"
+              className="bg-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700 hover:border-yellow-400/50 transition-all duration-300 group hover:transform hover:scale-105"
             >
               <div className="relative h-48 overflow-hidden">
                 <img
                   src={asignatura.imagen}
                   alt={asignatura.nombre}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
-                <h3 className="absolute bottom-3 left-4 text-xl font-bold text-white">
-                  <span className="bg-yellow-500 text-gray-900 px-2 py-1 rounded">
-                    {asignatura.nombre}
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
+
+                {/* Etiquetas de categoría y dificultad */}
+                <div className="absolute top-4 left-4 flex flex-col gap-2">
+                  <span
+                    className={`px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(asignatura.categoria)}`}
+                  >
+                    {asignatura.categoria}
                   </span>
+                  <span
+                    className={`px-3 py-1 rounded-full text-xs font-medium border ${getDifficultyColor(asignatura.dificultad)}`}
+                  >
+                    {asignatura.dificultad}
+                  </span>
+                </div>
+
+                <h3 className="absolute bottom-4 left-4 right-4 text-xl font-bold text-white">
+                  {asignatura.nombre}
                 </h3>
               </div>
-              <div className="p-5 flex-grow">
-                <p className="text-gray-300">{asignatura.descripcion}</p>
+
+              <div className="p-6">
+                <p className="text-gray-300 mb-6 leading-relaxed">
+                  {asignatura.descripcion}
+                </p>
+
+                <a
+                  href={`https://wa.me/${asignatura.whatsapp}?text=Hola,%20quiero%20hacer%20una%20consulta%20sobre%20${encodeURIComponent(asignatura.nombre)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-gray-900 py-3 px-6 rounded-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Consultar ahora
+                </a>
               </div>
-              <a
-                href={`https://wa.me/${
-                  asignatura.whatsapp
-                }?text=Hola,%20quiero%20hacer%20una%20consulta%20sobre%20${encodeURIComponent(
-                  asignatura.nombre
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="m-4 block text-center bg-yellow-500 text-gray-900 py-3 px-4 rounded-lg font-semibold hover:bg-yellow-400 transition-colors duration-300 transform hover:translate-y-1 shadow-md"
-              >
-                <span className="flex items-center justify-center">
-                  <svg
-                    className="w-5 h-5 mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  Consultar
-                </span>
-              </a>
             </div>
           ))}
         </div>
       </div>
-      {/* Improved footer integration */}
-      <div className="mt-16">
-        <div className="w-full h-10 bg-gradient-to-r from-gray-900 via-yellow-500 to-gray-900"></div>
-        <Footer className="bg-gray-950 py-8" />
+
+      {/* Footer con separador visual */}
+      <div className="mt-20">
+        <div className="h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
+        <Footer />
       </div>
-      {/* Floating Back to Top Button */}
+
+      {/* Botón flotante mejorado */}
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 left-8 bg-yellow-500 hover:bg-yellow-400 text-gray-900 p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-50 focus:outline-none cursor-pointer"
+          className="fixed bottom-8 right-8 bg-yellow-500 hover:bg-yellow-400 text-gray-900 p-4 rounded-full shadow-xl transition-all duration-300 hover:scale-110 z-50 group"
           aria-label="Volver a Inicio"
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M5 10l7-7m0 0l7 7m-7-7v18"
-            ></path>
-          </svg>
+          <ArrowUp className="w-6 h-6 group-hover:translate-y-1 transition-transform" />
         </button>
       )}
     </div>
