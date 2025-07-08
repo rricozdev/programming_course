@@ -48,7 +48,7 @@ const LandingPage = () => {
       {
         id: 1,
         name: "Arch",
-        role: "Instructor Senior",
+        role: "Instructor",
         phone: "573135344581",
         platform: "whatsapp",
         specialty: "Full Stack Developer",
@@ -56,7 +56,7 @@ const LandingPage = () => {
       {
         id: 2,
         name: "Tiago",
-        role: "Instructor Senior",
+        role: "Instructor",
         phone: "573205510452",
         platform: "whatsapp",
         specialty: "Backend Specialist",
